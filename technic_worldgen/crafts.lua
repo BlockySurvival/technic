@@ -120,27 +120,6 @@ minetest.register_craft({
 	output = "technic:lead_ingot",
 })
 
-
-minetest.register_craft({
-	type = 'cooking',
-	recipe = minetest.registered_aliases["technic:wrought_iron_ingot"],
-	output = "technic:cast_iron_ingot",
-})
-
-minetest.register_craft({
-	type = 'cooking',
-	recipe = "technic:cast_iron_ingot",
-	cooktime = 2,
-	output = "technic:wrought_iron_ingot",
-})
-
-minetest.register_craft({
-	type = 'cooking',
-	recipe = "technic:carbon_steel_ingot",
-	cooktime = 2,
-	output = "technic:wrought_iron_ingot",
-})
-
 local function for_each_registered_item(action)
 	local already_reg = {}
 	for k, _ in pairs(minetest.registered_items) do

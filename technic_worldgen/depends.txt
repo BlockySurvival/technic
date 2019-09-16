@@ -6,4 +6,6 @@ doors?
 farming?
 glooptest?
 mesecons_doors?
+moreblocks?
+terumet?
 vessels?

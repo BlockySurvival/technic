@@ -10,6 +10,19 @@ dofile(modpath.."/nodes.lua")
 dofile(modpath.."/oregen.lua")
 dofile(modpath.."/crafts.lua")
 
+if minetest.get_modpath("basic_materials") then
+	dofile(modpath .. "/interop/basic_materials.lua")
+end
+
+-- mg suppport
+if minetest.get_modpath("mg") then
+	dofile(modpath.."/mg.lua")
+end
+
+if minetest.get_modpath("moreblocks") then
+	dofile(modpath.."/interop/moreblocks.lua")
+end
+
 -- Rubber trees, moretrees also supplies these
 if not minetest.get_modpath("moretrees") then
 	dofile(modpath.."/rubber.lua")
@@ -19,8 +32,7 @@ else
 	minetest.register_alias("technic:rubber_tree_empty", "moretrees:rubber_tree_trunk_empty")
 end
 
--- mg suppport
-if minetest.get_modpath("mg") then
-	dofile(modpath.."/mg.lua")
+if minetest.get_modpath("terumet") then
+	dofile(modpath .. "/interop/terumet.lua")
 end
 
