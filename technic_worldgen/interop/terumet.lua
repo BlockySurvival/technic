@@ -15,14 +15,14 @@ terumet.register_alloy_recipe({
 terumet.register_alloy_recipe({
     result="technic:carbon_steel_block 2",
     input={"default:steelblock 2", "default:coalblock"},
-    time=30,
+    time=100,
     flux=0,
 })
 
 terumet.register_alloy_recipe({
     result="technic:cast_iron_ingot 2",
     input={"technic:carbon_steel_ingot 2", "default:coal_lump"},
-    time=200,
+    time=60,
     flux=0,
 })
 terumet.register_alloy_recipe({
@@ -33,15 +33,15 @@ terumet.register_alloy_recipe({
 })
 
 terumet.register_alloy_recipe({
-    result="technic:stainless_steel_ingot 4",
-    input={"technic:carbon_steel_ingot 3", "technic:chromium_ingot"},
+    result="technic:stainless_steel_ingot 8",
+    input={"technic:carbon_steel_ingot 7", "technic:chromium_ingot"},
     time=30,
     flux=0,
 })
 terumet.register_alloy_recipe({
-    result="technic:stainless_steel_block 4",
-    input={"technic:carbon_steel_block 3", "technic:chromium_block"},
-    time=30,
+    result="technic:stainless_steel_block 7",
+    input={"technic:carbon_steel_block 7", "technic:chromium_block"},
+    time=100,
     flux=0,
 })
 
