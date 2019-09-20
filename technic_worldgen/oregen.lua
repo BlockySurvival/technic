@@ -41,7 +41,6 @@ minetest.register_ore({
 	clust_size = 3,
 	y_min = -25000,
 	y_max = -1000,
-	flags = "absheight",
 })
 
 minetest.register_ore({
@@ -64,7 +63,6 @@ minetest.register_ore({
 	clust_size = 3,
 	y_min = -31000,
 	y_max = -32,
-	flags = "absheight",
 })
 
 minetest.register_ore({
@@ -98,7 +96,6 @@ minetest.register_ore({
 	clust_size = 3,
 	y_min = -31000,
 	y_max = -128,
-	flags = "absheight",
 })
 
 -- Sulfur
