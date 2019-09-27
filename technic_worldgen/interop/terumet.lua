@@ -7,27 +7,27 @@ terumet.register_repair_material("technic:cast_iron_ingot", 60)        -- techni
 terumet.register_repair_material("technic:stainless_steel_ingot", 150) -- 3xtechnic:carbon_steel_ingot + technic:chromium_ingot
 
 terumet.register_alloy_recipe({
-    result="technic:carbon_steel_ingot 2",
-    input={"default:steel_ingot 2", "default:coal_lump"},
+    result="technic:carbon_steel_ingot 3",
+    input={"default:steel_ingot 3", "default:coal_lump"},
     time=30,
     flux=0,
 })
 terumet.register_alloy_recipe({
-    result="technic:carbon_steel_block 2",
-    input={"default:steelblock 2", "default:coalblock"},
+    result="technic:carbon_steel_block 3",
+    input={"default:steelblock 3", "default:coalblock"},
     time=100,
     flux=0,
 })
 
 terumet.register_alloy_recipe({
-    result="technic:cast_iron_ingot 2",
-    input={"technic:carbon_steel_ingot 2", "default:coal_lump"},
+    result="technic:cast_iron_ingot 3",
+    input={"technic:carbon_steel_ingot 3", "default:coal_lump"},
     time=60,
     flux=0,
 })
 terumet.register_alloy_recipe({
-    result="technic:cast_iron_block 2",
-    input={"technic:carbon_steel_block 2", "default:coalblock"},
+    result="technic:cast_iron_block 3",
+    input={"technic:carbon_steel_block 3", "default:coalblock"},
     time=200,
     flux=0,
 })
