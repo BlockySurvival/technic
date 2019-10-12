@@ -1,6 +1,7 @@
 default
 basic_materials
 moreblocks?
+areas?
 moreores?
 pipeworks?
 intllib?

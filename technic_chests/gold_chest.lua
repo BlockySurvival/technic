@@ -42,6 +42,7 @@ technic.chests:register("Gold", {
 	autosort = true,
 	infotext = true,
 	color = true,
+	quickmove = true,
 	locked = false,
 })
 
@@ -52,6 +53,8 @@ technic.chests:register("Gold", {
 	autosort = true,
 	infotext = true,
 	color = true,
+	quickmove = true,
 	locked = true,
+	shared = true,
 })
 

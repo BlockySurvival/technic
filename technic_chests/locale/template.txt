@@ -37,3 +37,15 @@ Sort =
 Auto-sort is %s =
 Off =
 On =
+
+# Quickmove
+To Chest =
+To Inventory =
+Move items from inventory to chest =
+Move items from chest to inventory =
+Item to move =
+Empty for all =
+Save filter =
+
+# Shared
+Share chest with players added to area =
