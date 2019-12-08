@@ -31,8 +31,3 @@ else
 	minetest.register_alias("technic:rubber_sapling", "moretrees:rubber_tree_sapling")
 	minetest.register_alias("technic:rubber_tree_empty", "moretrees:rubber_tree_trunk_empty")
 end
-
-if minetest.get_modpath("terumet") then
-	dofile(modpath .. "/interop/terumet.lua")
-end
-
