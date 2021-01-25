@@ -24,48 +24,81 @@ local nodes = {
 	{"default:jungleleaves", false},
 	{"default:pine_needles", false},
 
+	-- The default bushes
+	{"default:acacia_bush_stem", true},
+	{"default:bush_stem", true},
+	{"default:pine_bush_stem", true},
+	{"default:acacia_bush_leaves", false},
+	{"default:blueberry_bush_leaves", false},
+	{"default:blueberry_bush_leaves_with_berries", false},
+	{"default:bush_leaves", false},
+	{"default:pine_bush_needles", false},
+
 	-- Rubber trees from moretrees or technic_worldgen if moretrees isn't installed
 	{"moretrees:rubber_tree_trunk_empty", true},
 	{"moretrees:rubber_tree_trunk", true},
 	{"moretrees:rubber_tree_leaves", false},
 
-	-- Support moretrees
+	-- Support moretrees (trunk)
 	{"moretrees:acacia_trunk", true},
 	{"moretrees:apple_tree_trunk", true},
 	{"moretrees:beech_trunk", true},
 	{"moretrees:birch_trunk", true},
+	{"moretrees:cedar_trunk", true},
+	{"moretrees:date_palm_ffruit_trunk", true},
+	{"moretrees:date_palm_fruit_trunk", true},
+	{"moretrees:date_palm_mfruit_trunk", true},
+	{"moretrees:date_palm_trunk", true},
 	{"moretrees:fir_trunk", true},
+	{"moretrees:jungletree_trunk", true},
 	{"moretrees:oak_trunk", true},
 	{"moretrees:palm_trunk", true},
+	{"moretrees:palm_fruit_trunk", true},
+	{"moretrees:palm_fruit_trunk_gen", true},
 	{"moretrees:pine_trunk", true},
+	{"moretrees:poplar_trunk", true},
 	{"moretrees:sequoia_trunk", true},
 	{"moretrees:spruce_trunk", true},
 	{"moretrees:willow_trunk", true},
-	{"moretrees:jungletree_trunk", true},
-	{"moretrees:poplar_trunk", true},
+	-- Support moretrees (leaves)
 	{"moretrees:acacia_leaves", false},
 	{"moretrees:apple_tree_leaves", false},
-	{"moretrees:oak_leaves", false},
+	{"moretrees:beech_leaves", false},
+	{"moretrees:birch_leaves", false},
+	{"moretrees:cedar_leaves", false},
+	{"moretrees:date_palm_leaves", false},
 	{"moretrees:fir_leaves", false},
 	{"moretrees:fir_leaves_bright", false},
-	{"moretrees:sequoia_leaves", false},
-	{"moretrees:birch_leaves", false},
-	{"moretrees:birch_leaves", false},
-	{"moretrees:palm_leaves", false},
-	{"moretrees:spruce_leaves", false},
-	{"moretrees:spruce_leaves", false},
-	{"moretrees:pine_leaves", false},
-	{"moretrees:willow_leaves", false},
 	{"moretrees:jungletree_leaves_green", false},
 	{"moretrees:jungletree_leaves_yellow", false},
 	{"moretrees:jungletree_leaves_red", false},
-	{"moretrees:acorn", false},
-	{"moretrees:coconut", false},
-	{"moretrees:spruce_cone", false},
-	{"moretrees:pine_cone", false},
-	{"moretrees:fir_cone", false},
-	{"moretrees:apple_blossoms", false},
+	{"moretrees:oak_leaves", false},
+	{"moretrees:palm_leaves", false},
 	{"moretrees:poplar_leaves", false},
+	{"moretrees:pine_leaves", false},
+	{"moretrees:sequoia_leaves", false},
+	{"moretrees:spruce_leaves", false},
+	{"moretrees:willow_leaves", false},
+	-- Support moretrees (fruit)
+	{"moretrees:acorn", false},
+	{"moretrees:apple_blossoms", false},
+	{"moretrees:cedar_cone", false},
+	{"moretrees:coconut", false},
+	{"moretrees:coconut_0", false},
+	{"moretrees:coconut_1", false},
+	{"moretrees:coconut_2", false},
+	{"moretrees:coconut_3", false},
+	{"moretrees:dates_f0", false},
+	{"moretrees:dates_f1", false},
+	{"moretrees:dates_f2", false},
+	{"moretrees:dates_f3", false},
+	{"moretrees:dates_f4", false},
+	{"moretrees:dates_fn", false},
+	{"moretrees:dates_m0", false},
+	{"moretrees:dates_n", false},
+	{"moretrees:fir_cone", false},
+	{"moretrees:pine_cone", false},
+	{"moretrees:spruce_cone", false},
 
 	-- Support growing_trees
 	{"growing_trees:trunk", true},
@@ -148,6 +181,36 @@ local nodes = {
 	{"trunks:moss", false},
 	{"trunks:moss_fungus", false},
 	{"trunks:treeroot", false},
+
+	-- Support ethereal
+	{"ethereal:bamboo", true},
+	{"ethereal:bamboo_leaves", false},
+	{"ethereal:banana_trunk", true},
+	{"ethereal:bananaleaves", false},
+	{"ethereal:banana", false},
+	{"ethereal:birch_trunk", true},
+	{"ethereal:birch_leaves", false},
+	{"ethereal:frost_tree", true},
+	{"ethereal:frost_leaves", false},
+	{"ethereal:mushroom_trunk", true},
+	{"ethereal:mushroom", false},
+	{"ethereal:mushroom_pore", true},
+	{"ethereal:orangeleaves", false},
+	{"ethereal:orange", false},
+	{"ethereal:palm_trunk", true},
+	{"ethereal:palmleaves", false},
+	{"ethereal:coconut", false},
+	{"ethereal:redwood_trunk", true},
+	{"ethereal:redwood_leaves", false},
+	{"ethereal:sakura_trunk", true},
+	{"ethereal:sakura_leaves", false},
+	{"ethereal:sakura_leaves2", false},
+	{"ethereal:scorched_tree", true},
+	{"ethereal:willow_trunk", true},
+	{"ethereal:willow_twig", false},
+	{"ethereal:yellow_trunk", true},
+	{"ethereal:yellowleaves", false},
+	{"ethereal:golden_apple", false},
 }
 
 local timber_nodenames = {}
@@ -160,6 +223,18 @@ end
 local S = technic.getter
 
 technic.register_power_tool("technic:chainsaw", chainsaw_max_charge)
+
+-- This function checks if the specified node should be sawed
+local function check_if_node_sawed(pos)
+	local node_name = minetest.get_node(pos).name
+	if timber_nodenames[node_name]
+			or (chainsaw_leaves and minetest.get_item_group(node_name, "leaves") ~= 0)
+			or minetest.get_item_group(node_name, "tree") ~= 0 then
+		return true
+	end
+
+	return false
+end
 
 -- Table for saving what was sawed down
 local produced = {}
@@ -237,7 +312,7 @@ local function recursive_dig(pos, remaining_charge)
 	end
 	local node = minetest.get_node(pos)
 
-	if not timber_nodenames[node.name] then
+	if not check_if_node_sawed(pos) then
 		return remaining_charge
 	end
 
@@ -251,8 +326,10 @@ local function recursive_dig(pos, remaining_charge)
 		if remaining_charge < chainsaw_charge_per_node then
 			break
 		end
-		if timber_nodenames[minetest.get_node(npos).name] then
+		if check_if_node_sawed(npos) then
 			remaining_charge = recursive_dig(npos, remaining_charge)
+		else
+			minetest.check_for_falling(npos)
 		end
 	end
 	return remaining_charge
